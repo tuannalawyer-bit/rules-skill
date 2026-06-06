@@ -47,6 +47,10 @@ Tài liệu này quy định các nguyên tắc, quy trình và tiêu chuẩn ho
    - Có thể dễ dàng sao chép sang máy tính khác chạy hệ điều hành tương đương và sử dụng ngay lập tức mà không yêu cầu người dùng phải cài đặt thêm tài nguyên hay môi trường phức tạp bên ngoài.
 6. **Không yêu cầu quyền Admin:**
    - Các ứng dụng phải chạy hoàn toàn trong không gian quyền người dùng thường (User space), tuyệt đối không yêu cầu hoặc hỏi quyền Administrator (UAC prompt) khi hoạt động.
+7. **Tương thích Tiếng Việt Unicode (Telex) & Xử lý đường dẫn:**
+   - **Mã hóa tệp tin:** Mọi mã nguồn đọc/ghi tệp tin chứa ký tự Tiếng Việt bắt buộc phải chỉ định rõ mã hóa `encoding='utf-8'` (hoặc `encoding='utf-8-sig'` đối với tệp CSV để mở trực tiếp trên Excel Windows mà không bị lỗi hiển thị font).
+   - **Đường dẫn chứa ký tự Tiếng Việt:** Khi viết phần mềm, các đường dẫn tệp/thư mục chứa tiếng Việt (ví dụ: `Dự án AI`) phải luôn được bọc trong dấu ngoặc kép đôi `"..."` khi gọi lệnh hệ thống, hoặc truyền tham số dưới dạng danh sách (list arguments) trong hàm `subprocess` thay vì dạng chuỗi để Windows giải mã chính xác.
+   - **Chuẩn hóa đường dẫn (Path Normalization):** Luôn sử dụng thư viện `pathlib` hoặc `os.path` để quản lý và chuẩn hóa đường dẫn. Bắt buộc viết các hàm kiểm tra sự tồn tại của đường dẫn (`exists()`) và bẫy lỗi mã hóa (`UnicodeError`) trước khi thao tác để phần mềm tự phục hồi khi gặp đường dẫn tiếng Việt lạ.
 
 ---
 
