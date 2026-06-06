@@ -2,3 +2,4 @@ Yêu cầu sửa đổi,Giải pháp thực hiện,Tên phiên bản,Thời gian
 Khởi tạo dự án và thiết lập nguyên tắc hoạt động toàn cục,Tạo tệp general_rules.md tại thư mục tri thức toàn cục và chuẩn bị cài đặt 5 kỹ năng tùy chỉnh cho hệ thống.,v1.0.0,2026-06-06 01:23:00
 Cài đặt 5 kỹ năng tùy chỉnh phục vụ cào dữ liệu/SAP/xử lý ảnh/làm phim/phản biện,Tạo các tệp SKILL.md tương ứng tại thư mục config/skills toàn cục.,v1.1.0,2026-06-06 01:24:00
 Bổ sung 6 kỹ năng xử lý dữ liệu và phát hiện bất thường số liệu,Tạo 6 tệp SKILL.md mới tại thư mục config/skills toàn cục.,v1.2.0,2026-06-06 21:44:00
+Đồng bộ toàn bộ nguyên tắc hoạt động và 11 kỹ năng tùy chỉnh lên GitHub,Tạo repository rules-skill cục bộ và thực hiện git push lên GitHub tuannalawyer-bit/rules-skill.,v1.3.0,2026-06-06 21:50:00
