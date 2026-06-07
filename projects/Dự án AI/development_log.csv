@@ -4,3 +4,4 @@ Cài đặt 5 kỹ năng tùy chỉnh phục vụ cào dữ liệu/SAP/xử lý 
 Bổ sung 6 kỹ năng xử lý dữ liệu và phát hiện bất thường số liệu,Tạo 6 tệp SKILL.md mới tại thư mục config/skills toàn cục.,v1.2.0,2026-06-06 21:44:00
 Đồng bộ toàn bộ nguyên tắc hoạt động và 11 kỹ năng tùy chỉnh lên GitHub,Tạo repository rules-skill cục bộ và thực hiện git push lên GitHub tuannalawyer-bit/rules-skill.,v1.3.0,2026-06-06 21:50:00
 Bổ sung nguyên tắc tương thích ký tự Tiếng Việt (Telex Unicode) và xử lý đường dẫn,Thêm nguyên tắc số 7 vào tệp general_rules.md và đồng bộ lên GitHub.,v1.4.0,2026-06-06 21:56:00
+Bổ sung 4 kỹ năng chọn lọc từ Matt Pocock (diagnose/handoff/prototype/grill-me),Tải và cấu hình 4 tệp SKILL.md mới toàn cục và đồng bộ lên GitHub.,v1.5.0,2026-06-07 20:58:00

@@ -1,25 +1,33 @@
 # Quy tắc & Kỹ năng tùy chỉnh cho Google Antigravity
 
-Repository này lưu trữ các nguyên tắc hoạt động toàn cục và 11 kỹ năng tùy chỉnh của trợ lý AI (Anti Gravity) phục vụ các công việc tự động hóa, cào dữ liệu, xử lý ảnh, dựng phim và QA dữ liệu trên Windows.
+Repository này lưu trữ các nguyên tắc hoạt động toàn cục và 15 kỹ năng tùy chỉnh của trợ lý AI (Anti Gravity) phục vụ các công việc tự động hóa, cào dữ liệu, xử lý ảnh, dựng phim, QA và chẩn đoán lỗi dữ liệu trên Windows.
 
 ---
 
 ## 1. Cấu trúc Kho lưu trữ
 
-*   **`rules/general_rules.md`**: Bản nguyên tắc hoạt động toàn cục (chỉ code khi xác nhận, tự động sao lưu, kiểm thử QA tự động sửa lỗi, không yêu cầu quyền Admin, chạy ứng dụng portable khởi động < 2s).
+*   **`rules/general_rules.md`**: Bản nguyên tắc hoạt động toàn cục (chỉ code khi xác nhận, tương thích Tiếng Việt Telex, tự động sao lưu, kiểm thử QA tự động sửa lỗi, không yêu cầu quyền Admin, chạy ứng dụng portable khởi động < 2s).
 *   **`projects/Dự án AI/development_log.csv`**: Tệp nhật ký phát triển ghi nhận lịch sử thay đổi phiên bản.
-*   **`skills/`**: Danh sách 11 kỹ năng tùy chỉnh:
-    *   `web-scraping-headless`: Cào web động không admin bằng Playwright.
-    *   `sap-automation-win32`: Tự động hóa SAP GUI và Excel Analysis qua COM API.
-    *   `image-computer-vision`: Xử lý hình ảnh và EasyOCR.
-    *   `ai-video-filmmaking`: Biên tập video tự động bằng MoviePy và FFmpeg portable.
-    *   `reasoning-critic-qa`: Kỹ năng tự phản biện ngược và QA vá lỗi tự động.
-    *   `statistical-anomaly-detector`: Tìm điểm bất thường bằng Z-Score và IQR.
-    *   `ml-anomaly-detector`: Tìm bất thường đa biến bằng Isolation Forest và LOF.
-    *   `time-series-anomaly-detector`: Tìm bất thường chuỗi thời gian bằng Rolling Stats và ADTK.
-    *   `data-cleaning-and-formatting`: Dọn dẹp dữ liệu thô và sửa lỗi font tiếng Việt.
-    *   `excel-report-generator`: Định dạng báo cáo Excel chuyên nghiệp, tô màu cảnh báo.
-    *   `pdf-data-extractor`: Trích xuất bảng dữ liệu từ tệp PDF/PDF Scan.
+*   **`skills/`**: Danh sách 15 kỹ năng tùy chỉnh:
+    *   **Nhóm năng suất & QA:**
+        *   `reasoning-critic-qa`: Kỹ năng tự phản biện ngược và QA vá lỗi tự động.
+        *   `diagnose`: Chẩn đoán lỗi phần mềm từng bước khoa học (từ Matt Pocock).
+        *   `grill-me`: Phỏng vấn sâu chất vấn giải pháp để đồng bộ (từ Matt Pocock).
+        *   `handoff`: Bàn giao ngữ cảnh phiên làm việc giữa các máy (từ Matt Pocock).
+        *   `prototype`: Xây dựng bản mẫu nhanh (MVP) cho ứng dụng (từ Matt Pocock).
+    *   **Nhóm cào dữ liệu & Tự động hóa:**
+        *   `web-scraping-headless`: Cào web động không admin bằng Playwright.
+        *   `sap-automation-win32`: Tự động hóa SAP GUI và Excel Analysis qua COM API.
+    *   **Nhóm xử lý đa phương tiện:**
+        *   `image-computer-vision`: Xử lý hình ảnh và EasyOCR.
+        *   `ai-video-filmmaking`: Biên tập video tự động bằng MoviePy và FFmpeg portable.
+    *   **Nhóm xử lý dữ liệu nâng cao:**
+        *   `statistical-anomaly-detector`: Tìm điểm bất thường bằng Z-Score và IQR.
+        *   `ml-anomaly-detector`: Tìm bất thường đa biến bằng Isolation Forest và LOF.
+        *   `time-series-anomaly-detector`: Tìm bất thường chuỗi thời gian bằng Rolling Stats và ADTK.
+        *   `data-cleaning-and-formatting`: Dọn dẹp dữ liệu thô và sửa lỗi font tiếng Việt.
+        *   `excel-report-generator`: Định dạng báo cáo Excel chuyên nghiệp, tô màu cảnh báo.
+        *   `pdf-data-extractor`: Trích xuất bảng dữ liệu từ tệp PDF/PDF Scan.
 
 ---
 
@@ -54,4 +62,4 @@ New-Item -ItemType Directory -Path "$HOME\.gemini\config\skills" -Force
 Copy-Item -Path "skills\*" -Destination "$HOME\.gemini\config\skills\" -Recurse -Force
 ```
 
-Khởi động lại phiên làm việc của Anti Gravity trên máy tính mới. Hệ thống sẽ tự động tải các nguyên tắc toàn cục và nhận diện toàn bộ 11 kỹ năng mới để sẵn sàng phục vụ bạn!
+Khởi động lại phiên làm việc của Anti Gravity trên máy tính mới. Hệ thống sẽ tự động tải các nguyên tắc toàn cục và nhận diện toàn bộ 15 kỹ năng mới để sẵn sàng phục vụ bạn!
