@@ -15,6 +15,8 @@ Các ứng dụng nhỏ, di động (Portable), chạy ở quyền người dùn
 *   **Tương thích Tiếng Việt (Telex/Unicode):**
     *   Luôn ghi rõ tham số `encoding='utf-8'` khi đọc/ghi tệp tin văn bản chứa Tiếng Việt.
     *   Sử dụng mã hóa `encoding='utf-8-sig'` khi kết xuất tệp CSV để tương thích tốt với phần mềm Excel trên Windows.
+*   **Quy trình sao lưu (Backup):**
+    *   Trước khi thay đổi hoặc cập nhật bất kỳ tệp tin nguồn hay tài liệu nào, bắt buộc phải tạo một bản sao lưu (backup) của tệp tin đó với hậu tố `.bak_YYYYMMDD_HHMMSS` nằm cùng thư mục hoặc trong thư mục backup riêng để tránh ghi đè trực tiếp làm mất phiên bản gốc.
 *   **Xử lý đường dẫn tương thích:**
     *   Bắt buộc bọc mọi đường dẫn tệp/thư mục có chứa khoảng trắng hoặc chữ Tiếng Việt có dấu (như `"C:\...\Dự án AI\"`) trong dấu ngoặc kép đôi `"..."` khi gọi lệnh qua dòng lệnh Shell (CMD/PowerShell).
     *   Luôn sử dụng thư viện `pathlib` hoặc `os.path` để quản lý đường dẫn một cách an toàn.
