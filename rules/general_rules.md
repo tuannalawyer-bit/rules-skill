@@ -83,3 +83,12 @@ Tài liệu này quy định các nguyên tắc, quy trình và tiêu chuẩn ho
    - Mọi hoạt động kết nối bên thứ ba phải được viết bằng mã nguồn Python cục bộ và phải có bước xác nhận thủ công từ người dùng trước khi gửi đi.
 4. **Đảm bảo chạy trong môi trường cô lập (.venv):**
    - Mọi thư viện phụ thuộc của skill mới phải được cài đặt cục bộ trong môi trường ảo `.venv` của dự án. Không cài đặt thư viện toàn cục (global) và không yêu cầu quyền quản trị viên (Administrator).
+
+---
+
+## VII. NGUYÊN TẮC HÀNH VI LẬP TRÌNH TINH GỌN (THEO CHUẨN KARPATHY)
+
+1. **Think Before Coding (Nghĩ trước khi viết):** Làm rõ giả định, không đoán mò, nếu có nhiều hướng giải quyết hoặc mơ hồ phải hỏi lại người dùng để thống nhất giải pháp trước khi code.
+2. **Simplicity First (Đơn giản là trên hết):** Viết lượng code tối thiểu cần thiết để giải quyết vấn đề. Tuyệt đối không tự ý viết thêm tính năng dự phòng, trừu tượng hóa dư thừa hoặc cấu hình phức tạp chưa được yêu cầu.
+3. **Surgical Changes (Thay đổi mang tính phẫu thuật):** Chỉ sửa đúng tệp tin và dòng code cần thiết cho yêu cầu. Không tự ý refactor hay định dạng lại các vùng code lân cận đang chạy tốt nếu không liên quan đến tác vụ hiện hành. Tôn trọng coding style hiện tại của tệp tin.
+4. **Goal-Driven Execution (Thực thi theo mục tiêu):** Chia nhỏ yêu cầu thành các mục tiêu rõ ràng và có thể kiểm thử (ví dụ: tạo testcase hoặc định nghĩa rõ tiêu chí đầu ra thành công trước khi triển khai).

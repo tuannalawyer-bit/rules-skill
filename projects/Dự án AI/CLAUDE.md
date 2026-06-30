@@ -17,6 +17,11 @@ Các ứng dụng nhỏ, di động (Portable), chạy ở quyền người dùn
     *   Sử dụng mã hóa `encoding='utf-8-sig'` khi kết xuất tệp CSV để tương thích tốt với phần mềm Excel trên Windows.
 *   **Quy trình sao lưu (Backup):**
     *   Trước khi thay đổi hoặc cập nhật bất kỳ tệp tin nguồn hay tài liệu nào, bắt buộc phải tạo một bản sao lưu (backup) của tệp tin đó với hậu tố `.bak_YYYYMMDD_HHMMSS` nằm cùng thư mục hoặc trong thư mục backup riêng để tránh ghi đè trực tiếp làm mất phiên bản gốc.
+*   **Hành vi lập trình tinh gọn (Karpathy rules):**
+    *   *Think Before Coding:* Nêu rõ giả định, giải thích các đánh đổi và làm rõ sự mơ hồ trước khi viết code.
+    *   *Simplicity First:* Viết lượng code tối thiểu, cấm tự ý thêm các tính năng dự phòng hoặc trừu tượng hóa phức tạp.
+    *   *Surgical Changes:* Chỉ chỉnh sửa vùng code bắt buộc. Tôn trọng style code hiện hành, không tự ý refactor code đang chạy tốt lân cận.
+    *   *Goal-Driven Execution:* Đặt ra tiêu chí nghiệm thu rõ ràng (viết testcase trước nếu có thể) trước khi triển khai.
 *   **Xử lý đường dẫn tương thích:**
     *   Bắt buộc bọc mọi đường dẫn tệp/thư mục có chứa khoảng trắng hoặc chữ Tiếng Việt có dấu (như `"C:\...\Dự án AI\"`) trong dấu ngoặc kép đôi `"..."` khi gọi lệnh qua dòng lệnh Shell (CMD/PowerShell).
     *   Luôn sử dụng thư viện `pathlib` hoặc `os.path` để quản lý đường dẫn một cách an toàn.

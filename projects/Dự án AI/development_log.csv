@@ -8,3 +8,4 @@ Bổ sung 4 kỹ năng chọn lọc từ Matt Pocock (diagnose/handoff/prototype
 Bổ sung Mục VI về nguyên tắc kiểm duyệt an toàn khi cài đặt các skill từ GitHub,Thêm Mục VI vào tệp general_rules.md và đồng bộ lên GitHub.,v1.6.0,2026-06-07 21:05:00
 Khởi tạo tệp CLAUDE.md theo chuẩn Boris Cherny cho Dự án AI,Thêm tệp CLAUDE.md vào thư mục dự án và đồng bộ lên GitHub.,v1.7.0,2026-06-07 21:50:00
 Bổ sung nguyên tắc sao lưu tệp nguồn trước khi chỉnh sửa vào CLAUDE.md,Thêm quy trình tạo file .bak vào Coding Guidelines và đồng bộ lên GitHub.,v1.8.0,2026-06-08 22:45:00
+Tích hợp nguyên tắc hành vi lập trình tinh gọn Karpathy vào hệ thống,Thêm Mục VII vào general_rules.md và cập nhật CLAUDE.md đồng bộ lên GitHub.,v1.9.0,2026-06-30 21:15:00
