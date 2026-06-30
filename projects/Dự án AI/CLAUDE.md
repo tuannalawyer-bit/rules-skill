@@ -12,22 +12,21 @@ Các ứng dụng nhỏ, di động (Portable), chạy ở quyền người dùn
 ---
 
 ## 2. Tiêu chuẩn viết code (Coding Guidelines)
-*   **Tương thích Tiếng Việt (Telex/Unicode):**
-    *   Luôn ghi rõ tham số `encoding='utf-8'` khi đọc/ghi tệp tin văn bản chứa Tiếng Việt.
-    *   Sử dụng mã hóa `encoding='utf-8-sig'` khi kết xuất tệp CSV để tương thích tốt với phần mềm Excel trên Windows.
-*   **Quy trình sao lưu (Backup):**
-    *   Trước khi thay đổi hoặc cập nhật bất kỳ tệp tin nguồn hay tài liệu nào, bắt buộc phải tạo một bản sao lưu (backup) của tệp tin đó với hậu tố `.bak_YYYYMMDD_HHMMSS` nằm cùng thư mục hoặc trong thư mục backup riêng để tránh ghi đè trực tiếp làm mất phiên bản gốc.
-*   **Hành vi lập trình tinh gọn (Karpathy rules):**
-    *   *Think Before Coding:* Nêu rõ giả định, giải thích các đánh đổi và làm rõ sự mơ hồ trước khi viết code.
-    *   *Simplicity First:* Viết lượng code tối thiểu, cấm tự ý thêm các tính năng dự phòng hoặc trừu tượng hóa phức tạp.
-    *   *Surgical Changes:* Chỉ chỉnh sửa vùng code bắt buộc. Tôn trọng style code hiện hành, không tự ý refactor code đang chạy tốt lân cận.
-    *   *Goal-Driven Execution:* Đặt ra tiêu chí nghiệm thu rõ ràng (viết testcase trước nếu có thể) trước khi triển khai.
-*   **Xử lý đường dẫn tương thích:**
-    *   Bắt buộc bọc mọi đường dẫn tệp/thư mục có chứa khoảng trắng hoặc chữ Tiếng Việt có dấu (như `"C:\...\Dự án AI\"`) trong dấu ngoặc kép đôi `"..."` khi gọi lệnh qua dòng lệnh Shell (CMD/PowerShell).
-    *   Luôn sử dụng thư viện `pathlib` hoặc `os.path` để quản lý đường dẫn một cách an toàn.
+*   **Giao tiếp & Phê duyệt (Pre-coding):**
+    *   Nêu rõ giả định, trình bày đánh đổi và làm rõ mơ hồ trước khi viết code.
+    *   Chỉ phân tích trên chat, chỉ chỉnh sửa tệp tin hoặc chạy lệnh hệ thống khi có sự đồng ý rõ ràng từ người dùng.
+*   **Quy trình sao lưu & Nhật ký (Safe Coding):**
+    *   Bắt buộc tạo bản sao lưu `.bak_YYYYMMDD_HHMMSS` trước khi chỉnh sửa bất kỳ tệp tin nguồn hay tài liệu nào.
+    *   Ghi nhận nhật ký vào `development_log.csv` (lưu bằng `utf-8-sig`) ngay sau khi sửa thành công. Định dạng cột thời gian bắt buộc là **`dd-mm-yyyy HH:mm:ss`** (ví dụ: `30-06-2026 21:30:00`).
+*   **Hành vi lập trình tinh gọn (Simplicity & Surgical Changes):**
+    *   Chỉ sửa đổi đúng tệp tin và dòng code bắt buộc, không refactor bừa bãi.
+    *   Viết lượng code tối thiểu cần thiết để giải quyết vấn đề, cấm vẽ thêm logic dự phòng. Tinh chỉnh và làm sạch code trước khi bàn giao.
+*   **Tương thích Tiếng Việt (Telex/Unicode) & Xử lý đường dẫn:**
+    *   Ghi rõ `encoding='utf-8'` khi đọc/ghi tệp văn bản Tiếng Việt (`encoding='utf-8-sig'` đối với CSV).
+    *   Bọc đường dẫn có chứa khoảng trắng hoặc ký tự có dấu trong dấu ngoặc kép đôi `"..."` khi gọi qua dòng lệnh Shell.
 *   **Đóng gói Portable & Không Admin:**
-    *   Ứng dụng phải được thiết kế chạy hoàn toàn trong không gian quyền người dùng (User space), không đòi hỏi hoặc yêu cầu quyền Administrator.
-    *   Tối ưu hóa mã nguồn (sử dụng lazy load) để đảm bảo tốc độ khởi động của phần mềm dưới **2 giây**.
+    *   Ứng dụng hoạt động trong không gian quyền người dùng (User space), tuyệt đối không đòi quyền Admin.
+    *   Thiết kế dạng Portable, tối ưu hóa tốc độ khởi động phần mềm dưới **2 giây**.
 
 ---
 
