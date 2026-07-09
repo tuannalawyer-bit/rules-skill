@@ -1,6 +1,6 @@
 # Quy tắc & Kỹ năng tùy chỉnh cho Google Antigravity
 
-Repository này lưu trữ các nguyên tắc hoạt động toàn cục và 15 kỹ năng tùy chỉnh của trợ lý AI (Anti Gravity) phục vụ các công việc tự động hóa, cào dữ liệu, xử lý ảnh, dựng phim, QA và chẩn đoán lỗi dữ liệu trên Windows.
+Repository này lưu trữ các nguyên tắc hoạt động toàn cục và 18 kỹ năng tùy chỉnh của trợ lý AI (Anti Gravity) phục vụ các công việc tự động hóa, cào dữ liệu, xử lý ảnh, dựng phim, QA và chẩn đoán lỗi dữ liệu trên Windows.
 
 ---
 
@@ -8,26 +8,29 @@ Repository này lưu trữ các nguyên tắc hoạt động toàn cục và 15 
 
 *   **`rules/general_rules.md`**: Bản nguyên tắc hoạt động toàn cục (chỉ code khi xác nhận, tương thích Tiếng Việt Telex, tự động sao lưu, kiểm thử QA tự động sửa lỗi, không yêu cầu quyền Admin, chạy ứng dụng portable khởi động < 2s).
 *   **`projects/Dự án AI/development_log.csv`**: Tệp nhật ký phát triển ghi nhận lịch sử thay đổi phiên bản.
-*   **`skills/`**: Danh sách 15 kỹ năng tùy chỉnh:
+*   **`skills/`**: Danh sách 18 kỹ năng tùy chỉnh:
     *   **Nhóm năng suất & QA:**
-        *   `reasoning-critic-qa`: Kỹ năng tự phản biện ngược và QA vá lỗi tự động.
-        *   `diagnose`: Chẩn đoán lỗi phần mềm từng bước khoa học (từ Matt Pocock).
-        *   `grill-me`: Phỏng vấn sâu chất vấn giải pháp để đồng bộ (từ Matt Pocock).
-        *   `handoff`: Bàn giao ngữ cảnh phiên làm việc giữa các máy (từ Matt Pocock).
-        *   `prototype`: Xây dựng bản mẫu nhanh (MVP) cho ứng dụng (từ Matt Pocock).
+        *   `diagnose`: Chẩn đoán lỗi phần mềm từng bước khoa học.
+        *   `git-commit-helper`: Tự động hóa phân tích git diff, sinh commit Semantic, quản lý phiên bản SemVer và ghi nhật ký phát triển development_log.csv.
+        *   `grill-me`: Phỏng vấn sâu chất vấn giải pháp để đồng bộ lên GitHub.
+        *   `handoff`: Bàn giao ngữ cảnh phiên làm việc giữa các máy tính.
+        *   `prototype`: Xây dựng nhanh phiên bản thô chạy thử (MVP) của phần mềm.
+        *   `reasoning-critic-qa`: Phản biện giải pháp, phân tích rủi ro, kiểm thử (QA) và tự động sửa lỗi trong các ứng dụng di động & portable.
+        *   `skill-documenter`: Tự động quét thư mục skills/, đọc YAML frontmatter của từng kỹ năng và đồng bộ bảng danh sách kỹ năng vào tệp README.md chính.
     *   **Nhóm cào dữ liệu & Tự động hóa:**
-        *   `web-scraping-headless`: Cào web động không admin bằng Playwright.
-        *   `sap-automation-win32`: Tự động hóa SAP GUI và Excel Analysis qua COM API.
+        *   `sap-automation-win32`: Tự động hóa phần mềm SAP GUI & SAP Analysis trong Excel bằng win32com.client và openpyxl.
+        *   `web-scraping-headless`: Duyệt web động và cào dữ liệu dạng portable, không yêu cầu quyền Admin bằng Playwright (chromium) và BeautifulSoup.
     *   **Nhóm xử lý đa phương tiện:**
-        *   `image-computer-vision`: Xử lý hình ảnh và EasyOCR.
-        *   `ai-video-filmmaking`: Biên tập video tự động bằng MoviePy và FFmpeg portable.
+        *   `ai-video-filmmaking`: Làm phim AI bằng API và biên tập video tự động bằng MoviePy & FFmpeg portable.
+        *   `image-computer-vision`: Xử lý hình ảnh và nhận diện ký tự (OCR) bằng OpenCV, Pillow và EasyOCR không đòi hỏi quyền Admin.
+        *   `premium-ui-assets`: Cung cấp thư viện mã CSS/HTML mẫu chuẩn premium (gradient, glassmorphism, dark mode, micro-animations, màu HSL) để thiết kế giao diện cao cấp.
     *   **Nhóm xử lý dữ liệu nâng cao:**
-        *   `statistical-anomaly-detector`: Tìm điểm bất thường bằng Z-Score và IQR.
-        *   `ml-anomaly-detector`: Tìm bất thường đa biến bằng Isolation Forest và LOF.
-        *   `time-series-anomaly-detector`: Tìm bất thường chuỗi thời gian bằng Rolling Stats và ADTK.
-        *   `data-cleaning-and-formatting`: Dọn dẹp dữ liệu thô và sửa lỗi font tiếng Việt.
-        *   `excel-report-generator`: Định dạng báo cáo Excel chuyên nghiệp, tô màu cảnh báo.
-        *   `pdf-data-extractor`: Trích xuất bảng dữ liệu từ tệp PDF/PDF Scan.
+        *   `data-cleaning-and-formatting`: Chuẩn hóa định dạng, làm sạch dữ liệu thô và xử lý giá trị trống (Null/NaN) sử dụng pandas.
+        *   `excel-report-generator`: Tạo báo cáo Excel cao cấp, tô màu có điều kiện (Conditional Formatting) và tạo biểu đồ bằng openpyxl.
+        *   `ml-anomaly-detector`: Phát hiện bất thường đa biến bằng thuật toán học máy Isolation Forest và LOF sử dụng scikit-learn.
+        *   `pdf-data-extractor`: Trích xuất dữ liệu bảng biểu từ tệp PDF dạng văn bản hoặc dạng scan ảnh.
+        *   `statistical-anomaly-detector`: Phân tích bất thường đơn biến bằng thống kê Z-Score và IQR sử dụng pandas và numpy.
+        *   `time-series-anomaly-detector`: Phát hiện bất thường theo chuỗi thời gian sử dụng Rolling Statistics và thư viện ADTK.
 
 ---
 

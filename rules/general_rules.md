@@ -22,7 +22,7 @@ Tài liệu này quy định các nguyên tắc, quy trình và tiêu chuẩn ho
    - Chỉ chỉnh sửa đúng tệp tin và dòng code bắt buộc để giải quyết tác vụ.
    - Tôn trọng coding style hiện hành của dự án. Tuyệt đối không tự ý refactor, định dạng lại (reformat) hoặc "làm đẹp" các vùng code lân cận đang chạy tốt.
 2. **Quy trình sao lưu (Backup):**
-   - Trước khi thực hiện bất kỳ thay đổi nào trên tệp tin nguồn hoặc tài liệu của dự án, AI bắt buộc phải tạo một bản sao lưu của tệp tin đó với hậu tố `.bak_YYYYMMDD_HHMMSS` nằm cùng thư mục (hoặc trong thư mục backup riêng) để phòng ngừa rủi ro ghi đè làm mất mã gốc.
+   - Trước khi thực hiện bất kỳ thay đổi nào trên tệp tin nguồn hoặc tài liệu của dự án, AI bắt buộc phải tạo một bản sao lưu của tệp tin đó với hậu tố `.bak_YYYYMMDD_HHMMSS` trong thư mục tập trung `.backups/` nằm tại gốc dự án để tránh gây ô nhiễm không gian làm việc và Git status.
 3. **Nhật ký phát triển (Development Log):**
    - Phải duy trì tệp `development_log.csv` nằm ở thư mục gốc của dự án. Tệp phải được lưu với mã hóa **UTF-8 có BOM (`utf-8-sig`)** để mở trực tiếp trên Excel Windows không bị lỗi font Tiếng Việt.
    - Định dạng cột bắt buộc (ngăn cách bằng dấu phẩy): `Yêu cầu sửa đổi,Giải pháp thực hiện,Tên phiên bản,Thời gian xây dựng` (nếu nội dung cột chứa dấu phẩy, bắt buộc bọc trường đó trong dấu ngoặc kép đôi `""...""`).
@@ -43,6 +43,8 @@ Tài liệu này quy định các nguyên tắc, quy trình và tiêu chuẩn ho
    - Luôn sử dụng thư viện `pathlib` hoặc `os.path` để quản lý đường dẫn. Bắt buộc có hàm kiểm tra sự tồn tại (`exists()`) và bẫy lỗi mã hóa (`UnicodeError`).
 3. **Hiệu năng & Khởi động nhanh:**
    - Ứng dụng phải được tối ưu hóa để có tốc độ khởi động và sẵn sàng hoạt động trong vòng **2 giây**.
+4. **Khởi chạy Kiểm thử Thực tế (Run-Before-Deliver):**
+   - Trước khi bàn giao sản phẩm hoặc báo cáo thành công cho người dùng, AI bắt buộc phải thực hiện chạy thử mã nguồn cục bộ (ví dụ: thực thi script test hoặc chạy thử chương trình cục bộ) để đảm bảo hoàn toàn sạch lỗi cú pháp và lỗi runtime.
 
 ---
 
@@ -57,6 +59,8 @@ Tài liệu này quy định các nguyên tắc, quy trình và tiêu chuẩn ho
    - Cấm cài đặt tự động bằng dòng lệnh (`npx skills add...`). Phải tải thủ công tệp `SKILL.md` và kiểm duyệt chi tiết từng dòng code trong khung chat trước khi lưu.
    - Nghiêm cấm các lệnh tải file tự động từ internet (`curl`, `wget`) hoặc thực thi binary lạ trong phần `Preamble`.
    - Không tự động cấp quyền truy cập vào ứng dụng/tài khoản bên ngoài (OAuth, API Drive/Gmail/Slack). Cấm gửi dữ liệu doanh nghiệp (đặc biệt là dữ liệu từ SAP GUI) ra ngoài khi chưa được xác nhận thủ công từ người dùng.
+4. **Kiểm toán Thư viện để bảo vệ tính di động (Strict Dependency Auditing):**
+   - Tuyệt đối không tự ý sử dụng và `import` các thư viện bên thứ ba mà chưa được cài đặt trong môi trường ảo `.venv` hoặc khai báo trong `requirements.txt` của dự án. Luôn thực hiện kiểm toán danh sách thư viện cục bộ trước khi bổ sung mã nguồn import mới nhằm duy trì tính chất tự chạy di động (portable).
 
 ---
 

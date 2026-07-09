@@ -10,3 +10,4 @@ Khởi tạo tệp CLAUDE.md theo chuẩn Boris Cherny cho Dự án AI,Thêm t�
 Bổ sung nguyên tắc sao lưu tệp nguồn trước khi chỉnh sửa vào CLAUDE.md,Thêm quy trình tạo file .bak vào Coding Guidelines và đồng bộ lên GitHub.,v1.8.0,2026-06-08 22:45:00
 Tích hợp nguyên tắc hành vi lập trình tinh gọn Karpathy vào hệ thống,Thêm Mục VII vào general_rules.md và cập nhật CLAUDE.md đồng bộ lên GitHub.,v1.9.0,2026-06-30 21:15:00
 Tái cấu trúc Nguyên tắc toàn cục loại bỏ trùng lặp và chi tiết hóa Nhật ký phát triển,Gộp thành 5 Mục tinh gọn trong general_rules.md và đổi định dạng build time sang dd-mm-yyyy.,v2.0.0,30-06-2026 21:24:00
+Tối ưu hóa quy trình an toàn lập trình, sao lưu tập trung, kiểm toán thư viện di động và bổ sung 3 kỹ năng mới,Cập nhật general_rules.md, thêm .gitignore, CLAUDE.md, scripts/validate_skills.py, và 3 kỹ năng mới cùng tự động đồng bộ README.md.,v2.1.0,09-07-2026 13:54:00
