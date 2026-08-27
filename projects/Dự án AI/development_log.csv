@@ -1,4 +1,4 @@
-Yêu cầu sửa đổi,Giải pháp thực hiện,Tên phiên bản,Thời gian xây dựng
+﻿Yêu cầu sửa đổi,Giải pháp thực hiện,Tên phiên bản,Thời gian xây dựng
 Khởi tạo dự án và thiết lập nguyên tắc hoạt động toàn cục,Tạo tệp general_rules.md tại thư mục tri thức toàn cục và chuẩn bị cài đặt 5 kỹ năng tùy chỉnh cho hệ thống.,v1.0.0,2026-06-06 01:23:00
 Cài đặt 5 kỹ năng tùy chỉnh phục vụ cào dữ liệu/SAP/xử lý ảnh/làm phim/phản biện,Tạo các tệp SKILL.md tương ứng tại thư mục config/skills toàn cục.,v1.1.0,2026-06-06 01:24:00
 Bổ sung 6 kỹ năng xử lý dữ liệu và phát hiện bất thường số liệu,Tạo 6 tệp SKILL.md mới tại thư mục config/skills toàn cục.,v1.2.0,2026-06-06 21:44:00
@@ -11,3 +11,7 @@ Bổ sung nguyên tắc sao lưu tệp nguồn trước khi chỉnh sửa vào C
 Tích hợp nguyên tắc hành vi lập trình tinh gọn Karpathy vào hệ thống,Thêm Mục VII vào general_rules.md và cập nhật CLAUDE.md đồng bộ lên GitHub.,v1.9.0,2026-06-30 21:15:00
 Tái cấu trúc Nguyên tắc toàn cục loại bỏ trùng lặp và chi tiết hóa Nhật ký phát triển,Gộp thành 5 Mục tinh gọn trong general_rules.md và đổi định dạng build time sang dd-mm-yyyy.,v2.0.0,30-06-2026 21:24:00
 Tối ưu hóa quy trình an toàn lập trình, sao lưu tập trung, kiểm toán thư viện di động và bổ sung 3 kỹ năng mới,Cập nhật general_rules.md, thêm .gitignore, CLAUDE.md, scripts/validate_skills.py, và 3 kỹ năng mới cùng tự động đồng bộ README.md.,v2.1.0,09-07-2026 13:54:00
+Bổ sung hỗ trợ song song ChatGPT/Codex và Gemini/Antigravity,"Chuẩn hóa nguyên tắc đa nền tảng, bổ sung quy tắc dùng công cụ và dữ liệu an toàn, cập nhật hướng dẫn đồng bộ AGENTS.md và skills.",v2.2.0,04-08-2026 12:52:04
+Đồng bộ quy tắc skills và kiểm tra cài đặt tài nguyên trên máy,Đã kiểm duyệt skills cập nhật README đồng bộ quy tắc và skills sang Codex và Gemini kiểm tra tài nguyên và cài đặt các thư viện Python cần thiết,v2.2.1,07-08-2026 01:15:30
+Cập nhật và đồng bộ quy tắc cùng kỹ năng cho hệ sinh thái Gemini,"Khởi tạo tệp GEMINI.md tại thư mục gốc repository, đồng bộ general_rules.md sang knowledge/global_directives và sao chép 18 skills tùy chỉnh sang cấu hình toàn cục .gemini/config/skills.",v2.2.2,27-08-2026 17:01:30
+Bổ sung nguyên tắc viết kế hoạch thực hiện luôn kèm kịch bản kiểm thử,"Cập nhật general_rules.md lên v2.3.0 bổ sung Mục I.3 Planning with Test Scenarios và Mục III.4 Run-Before-Deliver; đồng bộ sang GEMINI.md, AGENTS.md, CLAUDE.md và global_directives.",v2.3.0,27-08-2026 17:04:30

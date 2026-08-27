@@ -1,6 +1,6 @@
-# Quy tắc & Kỹ năng tùy chỉnh cho Google Antigravity
+# Quy tắc & Kỹ năng tùy chỉnh cho ChatGPT/Codex và Google Antigravity
 
-Repository này lưu trữ các nguyên tắc hoạt động toàn cục và 18 kỹ năng tùy chỉnh của trợ lý AI (Anti Gravity) phục vụ các công việc tự động hóa, cào dữ liệu, xử lý ảnh, dựng phim, QA và chẩn đoán lỗi dữ liệu trên Windows.
+Repository này lưu trữ các nguyên tắc hoạt động dùng chung và 18 kỹ năng tùy chỉnh cho ChatGPT/Codex và Google Antigravity/Gemini, phục vụ các công việc tự động hóa, cào dữ liệu, xử lý ảnh, dựng phim, QA và chẩn đoán lỗi dữ liệu trên Windows.
 
 ---
 
@@ -45,7 +45,14 @@ git clone https://github.com/tuannalawyer-bit/rules-skill.git
 cd rules-skill
 ```
 
-### Bước 2: Đồng bộ Nguyên tắc hoạt động toàn cục (Global Rules)
+### Bước 2: Đồng bộ nguyên tắc cho nền tảng đang dùng
+
+#### ChatGPT/Codex
+
+Đặt `AGENTS.md` tại thư mục gốc của repository cần làm việc. Nếu dự án đã có `AGENTS.md`, hãy hợp nhất nội dung thay vì ghi đè để giữ các quy ước riêng của dự án.
+
+#### Google Antigravity/Gemini
+
 Sao chép tệp `general_rules.md` vào thư mục cấu hình ẩn của Antigravity trên máy mới:
 ```powershell
 # Tạo thư mục đích nếu chưa có
@@ -55,9 +62,16 @@ New-Item -ItemType Directory -Path "$HOME\.gemini\antigravity\knowledge\global_d
 Copy-Item -Path "rules\general_rules.md" -Destination "$HOME\.gemini\antigravity\knowledge\global_directives\" -Force
 ```
 
-### Bước 3: Đồng bộ các Kỹ năng tùy chỉnh (Global Skills)
-Sao chép thư mục `skills` vào thư mục cấu hình skill toàn cục của máy mới:
+### Bước 3: Đồng bộ các kỹ năng tùy chỉnh
+
+Với Codex, sao chép các thư mục kỹ năng vào thư mục kỹ năng cá nhân `$HOME\.codex\skills`. Với Antigravity, sử dụng `$HOME\.gemini\config\skills` như dưới đây. Hãy kiểm duyệt nội dung trước khi cài và không ghi đè kỹ năng đã tùy chỉnh nếu chưa sao lưu.
+
 ```powershell
+# Codex
+New-Item -ItemType Directory -Path "$HOME\.codex\skills" -Force
+Copy-Item -Path "skills\*" -Destination "$HOME\.codex\skills\" -Recurse -Force
+
+# Antigravity/Gemini
 # Tạo thư mục đích nếu chưa có
 New-Item -ItemType Directory -Path "$HOME\.gemini\config\skills" -Force
 
@@ -65,4 +79,4 @@ New-Item -ItemType Directory -Path "$HOME\.gemini\config\skills" -Force
 Copy-Item -Path "skills\*" -Destination "$HOME\.gemini\config\skills\" -Recurse -Force
 ```
 
-Khởi động lại phiên làm việc của Anti Gravity trên máy tính mới. Hệ thống sẽ tự động tải các nguyên tắc toàn cục và nhận diện toàn bộ 15 kỹ năng mới để sẵn sàng phục vụ bạn!
+Khởi động một phiên làm việc mới trên nền tảng tương ứng để hệ thống nạp lại nguyên tắc và nhận diện các kỹ năng.

@@ -1,0 +1,26 @@
+# Python dependencies for Rules & Skills repository
+
+# Core Data & Analytics
+pandas
+numpy
+openpyxl
+scikit-learn
+scipy
+adtk
+
+# Web Scraping & Automation
+playwright
+beautifulsoup4
+lxml
+requests
+pywin32
+
+# Computer Vision & Image Processing
+opencv-python
+pillow
+easyocr
+
+# Media & PDF Processing
+moviepy
+pdfplumber
+pypdf
