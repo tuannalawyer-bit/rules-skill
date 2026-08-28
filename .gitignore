@@ -1,3 +1,6 @@
 .backups/
 *.bak_*
 .claude/
+.venv/
+__pycache__/
+*.pyc
