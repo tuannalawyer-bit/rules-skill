@@ -1,6 +1,12 @@
 import os
 import sys
 
+# Đảm bảo in ký tự tiếng Việt an toàn trên console Windows
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+if hasattr(sys.stderr, 'reconfigure'):
+    sys.stderr.reconfigure(encoding='utf-8')
+
 def validate_skills():
     # Thư mục gốc chứa các skills
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

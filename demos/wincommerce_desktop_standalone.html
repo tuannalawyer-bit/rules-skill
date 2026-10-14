@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WinCommerce Management OS - Desktop Edition</title>
+  <style>
+    /* -------------------------------------------------------------
+       1. DESIGN TOKENS & 5 LUMINOUS PALETTES
+       ------------------------------------------------------------- */
+    :root {
+      /* Palette 1: Bạch Ngọc & Đỏ WinCommerce Rực Rỡ (Mặc định) */
+      --bg-ambient: radial-gradient(at 15% 15%, rgba(255, 230, 235, 0.85) 0px, transparent 55%),
+                    radial-gradient(at 85% 20%, rgba(254, 243, 220, 0.9) 0px, transparent 50%),
+                    radial-gradient(at 50% 90%, rgba(255, 220, 225, 0.5) 0px, transparent 60%),
+                    #f8f9fc;
+      --glass-surface: rgba(255, 255, 255, 0.75);
+      --glass-surface-solid: rgba(255, 255, 255, 0.92);
+      --glass-pill: rgba(255, 255, 255, 0.88);
+      --glass-border-top: rgba(255, 255, 255, 0.95);
+      --glass-border-bottom: rgba(210, 215, 230, 0.6);
+      --text-primary: #18191f;
+      --text-secondary: #585d6e;
+      --text-muted: #8c93a8;
+      --accent-red: #ea1d2d;
+      --accent-red-glow: rgba(234, 29, 45, 0.28);
+      --accent-gold: #c89c56;
+      --accent-gold-glow: rgba(200, 156, 86, 0.28);
+      --shadow-ambient: 0 24px 48px -12px rgba(234, 29, 45, 0.12), 0 6px 16px -2px rgba(0, 0, 0, 0.04);
+      --spring-curve: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="palette-2"] {
+      /* Palette 2: Lụa Sâm Panh & Cam Bình Minh */
+      --bg-ambient: radial-gradient(at 20% 15%, rgba(255, 240, 220, 0.9) 0px, transparent 50%),
+                    radial-gradient(at 80% 20%, rgba(255, 225, 210, 0.8) 0px, transparent 50%),
+                    #fcf8f3;
+      --glass-surface: rgba(255, 252, 248, 0.78);
+      --glass-pill: rgba(255, 255, 255, 0.9);
+      --accent-red: #ff3d52;
+      --accent-gold: #f5a623;
+      --accent-red-glow: rgba(255, 61, 82, 0.28);
+      --accent-gold-glow: rgba(245, 166, 35, 0.28);
+      --shadow-ambient: 0 24px 48px -12px rgba(245, 166, 35, 0.16), 0 6px 16px -2px rgba(0, 0, 0, 0.04);
+    }
+
+    [data-theme="palette-3"] {
+      /* Palette 3: Pha Lê Băng & Ruby San Hô */
+      --bg-ambient: radial-gradient(at 15% 15%, rgba(224, 242, 254, 0.85) 0px, transparent 55%),
+                    radial-gradient(at 85% 20%, rgba(255, 228, 230, 0.8) 0px, transparent 50%),
+                    #f0f7fc;
+      --glass-surface: rgba(255, 255, 255, 0.78);
+      --accent-red: #ea1d2d;
+      --accent-gold: #0284c7;
+      --accent-red-glow: rgba(234, 29, 45, 0.25);
+      --accent-gold-glow: rgba(2, 132, 199, 0.25);
+      --shadow-ambient: 0 24px 48px -12px rgba(2, 132, 199, 0.14), 0 6px 16px -2px rgba(0, 0, 0, 0.04);
+    }
+
+    [data-theme="palette-4"] {
+      /* Palette 4: Mật Vàng Hoàng Gia & Kem Sữa */
+      --bg-ambient: radial-gradient(at 15% 15%, rgba(254, 249, 195, 0.85) 0px, transparent 55%),
+                    radial-gradient(at 85% 20%, rgba(254, 226, 226, 0.8) 0px, transparent 50%),
+                    #faf8f0;
+      --glass-surface: rgba(255, 255, 255, 0.78);
+      --accent-red: #dc2626;
+      --accent-gold: #eab308;
+      --accent-red-glow: rgba(220, 38, 38, 0.25);
+      --accent-gold-glow: rgba(234, 179, 8, 0.25);
+      --shadow-ambient: 0 24px 48px -12px rgba(234, 179, 8, 0.16), 0 6px 16px -2px rgba(0, 0, 0, 0.04);
+    }
+
+    [data-theme="palette-5"] {
+      /* Palette 5: Kính Cực Quang Tán Sắc Apple */
+      --bg-ambient: radial-gradient(at 15% 15%, rgba(245, 208, 254, 0.8) 0px, transparent 55%),
+                    radial-gradient(at 85% 20%, rgba(254, 215, 226, 0.85) 0px, transparent 50%),
+                    #faf5ff;
+      --glass-surface: rgba(255, 255, 255, 0.78);
+      --accent-red: #e11d48;
+      --accent-gold: #8b5cf6;
+      --accent-red-glow: rgba(225, 29, 72, 0.28);
+      --accent-gold-glow: rgba(139, 92, 246, 0.28);
+      --shadow-ambient: 0 24px 48px -12px rgba(139, 92, 246, 0.16), 0 6px 16px -2px rgba(0, 0, 0, 0.04);
+    }
+
+    /* -------------------------------------------------------------
+       2. FULL-BLEED NATIVE DESKTOP SHELL
+       ------------------------------------------------------------- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      user-select: none;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: var(--bg-ambient);
+      color: var(--text-primary);
+      transition: background 0.6s var(--spring-curve);
+    }
+
+    .app-root {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* --- Native Window Titlebar (Window Drag Area) --- */
+    .desktop-titlebar {
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      border-bottom: 1px solid rgba(210, 215, 230, 0.55);
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      -webkit-app-region: drag; /* Native Window Dragging */
+      z-index: 1000;
+    }
+
+    .titlebar-left, .titlebar-center, .titlebar-right {
+      display: flex;
+      align-items: center;
+      -webkit-app-region: no-drag; /* Interactive controls are clickable */
+    }
+
+    .brand-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 4px 12px;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .brand-logo-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: var(--accent-red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 900;
+      font-size: 13px;
+      box-shadow: 0 2px 6px var(--accent-red-glow);
+    }
+
+    .brand-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .brand-title span {
+      color: var(--accent-red);
+    }
+
+    .live-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #059669;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      padding: 3px 10px;
+      border-radius: 9999px;
+      margin-left: 12px;
+    }
+
+    .live-pulse {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+      animation: pulseAnim 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseAnim {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(0.75); }
+    }
+
+    /* Search Pill */
+    .search-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      padding: 6px 16px;
+      border-radius: 9999px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      width: 360px;
+      box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.9), 0 2px 8px rgba(0, 0, 0, 0.03);
+      cursor: pointer;
+      transition: all 0.25s var(--spring-curve);
+    }
+
+    .search-pill:hover {
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 14px rgba(234, 29, 45, 0.14);
+      border-color: rgba(234, 29, 45, 0.3);
+    }
+
+    .search-kbd {
+      margin-left: auto;
+      background: rgba(0, 0, 0, 0.06);
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    /* Window Controls (Native Action Handlers) */
+    .window-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .win-btn {
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.2s var(--spring-curve), filter 0.2s;
+    }
+    .win-btn:hover { transform: scale(1.2); filter: brightness(0.9); }
+    .win-min { background: #ffbd2e; }
+    .win-max { background: #27c93f; }
+    .win-close { background: #ff5f56; }
+
+    /* -------------------------------------------------------------
+       3. DESKTOP BODY: SIDEBAR + MAIN CANVAS
+       ------------------------------------------------------------- */
+    .desktop-body {
+      display: flex;
+      flex: 1;
+      height: calc(100vh - 48px);
+      overflow: hidden;
+    }
+
+    /* Sidebar Navigation */
+    .desktop-sidebar {
+      width: 260px;
+      background: rgba(255, 255, 255, 0.55);
+      border-right: 1px solid rgba(210, 215, 230, 0.55);
+      padding: 20px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      flex-shrink: 0;
+    }
+
+    .sidebar-section-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+      padding: 10px 14px 6px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 16px;
+      border-radius: 14px;
+      color: var(--text-secondary);
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s var(--spring-curve);
+      border: 1px solid transparent;
+    }
+
+    .nav-item:hover {
+      background: rgba(255, 255, 255, 0.75);
+      color: var(--text-primary);
+      transform: translateX(4px);
+    }
+
+    .nav-item.active {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+      color: var(--accent-red);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      box-shadow: 0 10px 22px -5px var(--accent-red-glow), inset 0 1px 1px #fff;
+    }
+
+    .nav-item svg {
+      width: 19px;
+      height: 19px;
+      flex-shrink: 0;
+    }
+
+    .nav-item.active svg {
+      stroke: var(--accent-red);
+    }
+
+    /* Sidebar Footer Palette Switcher */
+    .sidebar-footer {
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid rgba(210, 215, 230, 0.45);
+    }
+
+    .theme-picker-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .theme-dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .theme-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid #ffffff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+      transition: transform 0.2s var(--spring-curve);
+    }
+    .theme-dot:hover { transform: scale(1.25); }
+    .theme-dot.active { outline: 2.5px solid var(--accent-red); }
+
+    /* Content Canvas */
+    .desktop-canvas {
+      flex: 1;
+      padding: 24px 28px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Zone Box Animations */
+    .zone-box {
+      width: 100%;
+      height: 100%;
+      display: none;
+      flex-direction: column;
+      gap: 22px;
+      opacity: 0;
+      transform: scale(0.985) translateY(12px);
+      transition: opacity 0.35s var(--spring-curve), transform 0.4s var(--spring-curve);
+    }
+
+    .zone-box.zone-show {
+      display: flex;
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
+    /* -------------------------------------------------------------
+       4. LUMINOUS LIQUID GLASS CORE CLASSES
+       ------------------------------------------------------------- */
+    .luminous-glass {
+      background: linear-gradient(135deg, var(--glass-surface) 0%, rgba(255, 255, 255, 0.6) 100%);
+      backdrop-filter: blur(34px) saturate(200%);
+      -webkit-backdrop-filter: blur(34px) saturate(200%);
+      border-top: 1.5px solid var(--glass-border-top);
+      border-left: 1px solid rgba(255, 255, 255, 0.85);
+      border-right: 1px solid rgba(210, 215, 230, 0.5);
+      border-bottom: 1.5px solid var(--glass-border-bottom);
+      box-shadow: 
+        inset 0 1.5px 2px rgba(255, 255, 255, 0.95),
+        inset 0 -1.5px 2px rgba(0, 0, 0, 0.03),
+        var(--shadow-ambient);
+      border-radius: 1.35rem;
+      position: relative;
+    }
+
+    .tactile-card {
+      transition: all 0.32s var(--spring-curve);
+      cursor: pointer;
+    }
+
+    .tactile-card:hover {
+      transform: translateY(-4px) scale(1.008);
+      box-shadow: 
+        inset 0 2px 2px rgba(255, 255, 255, 1),
+        0 26px 48px -10px var(--accent-red-glow),
+        0 8px 18px -2px rgba(0, 0, 0, 0.06);
+      border-top-color: #ffffff;
+    }
+
+    .tactile-card:active {
+      transform: translateY(1px) scale(0.994);
+      box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.06),
+        0 6px 14px -3px rgba(0, 0, 0, 0.05);
+    }
+
+    .luminous-pill {
+      background: linear-gradient(135deg, var(--glass-pill) 0%, rgba(255, 255, 255, 0.85) 100%);
+      backdrop-filter: blur(28px) saturate(210%);
+      -webkit-backdrop-filter: blur(28px) saturate(210%);
+      border-top: 1.5px solid #ffffff;
+      border-left: 1px solid rgba(255, 255, 255, 0.9);
+      border-bottom: 1.5px solid rgba(210, 215, 230, 0.6);
+      box-shadow: 
+        inset 0 1px 2px rgba(255, 255, 255, 1),
+        0 10px 24px -5px rgba(0, 0, 0, 0.06);
+      border-radius: 9999px;
+    }
+
+    .btn-action {
+      background: linear-gradient(135deg, var(--accent-red) 0%, #c41220 100%);
+      color: white;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 10px 22px;
+      border-radius: 9999px;
+      border: none;
+      box-shadow: 0 10px 20px -4px var(--accent-red-glow), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s var(--spring-curve);
+    }
+
+    .btn-action:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px -4px var(--accent-red-glow);
+    }
+
+    /* -------------------------------------------------------------
+       5. VIEW 1: EXECUTIVE COMMAND CENTER
+       ------------------------------------------------------------- */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .kpi-card {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .kpi-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--text-secondary);
+      font-size: 12.5px;
+      font-weight: 600;
+    }
+
+    .kpi-value {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.6px;
+      color: var(--text-primary);
+    }
+
+    .kpi-delta {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      width: fit-content;
+    }
+
+    .delta-up { background: rgba(16, 185, 129, 0.14); color: #059669; }
+    .delta-accent { background: rgba(234, 29, 45, 0.12); color: var(--accent-red); }
+
+    .dashboard-split {
+      display: grid;
+      grid-template-columns: 2.2fr 1fr;
+      gap: 22px;
+      flex: 1;
+    }
+
+    .chart-container {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .chart-mockup {
+      flex: 1;
+      min-height: 280px;
+      display: flex;
+      align-items: flex-end;
+      gap: 20px;
+      padding: 16px 0 0;
+      border-bottom: 1.5px solid rgba(210, 215, 230, 0.6);
+    }
+
+    .chart-bar-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      height: 100%;
+      justify-content: flex-end;
+    }
+
+    .bar-stack {
+      width: 100%;
+      max-width: 48px;
+      border-radius: 8px 8px 3px 3px;
+      position: relative;
+      transition: height 0.8s var(--spring-curve);
+    }
+
+    .bar-red {
+      background: linear-gradient(180deg, var(--accent-red) 0%, rgba(234, 29, 45, 0.6) 100%);
+      box-shadow: 0 4px 14px var(--accent-red-glow);
+    }
+
+    .bar-gold {
+      background: linear-gradient(180deg, var(--accent-gold) 0%, rgba(200, 156, 86, 0.6) 100%);
+      box-shadow: 0 4px 14px var(--accent-gold-glow);
+    }
+
+    .bar-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .feed-container {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .feed-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      overflow-y: auto;
+    }
+
+    .feed-item {
+      padding: 14px;
+      background: rgba(255, 255, 255, 0.65);
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 12.5px;
+      line-height: 1.5;
+    }
+
+    .feed-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+
+    /* -------------------------------------------------------------
+       6. VIEW 2: AI RETAIL COPILOT & VOICE STUDIO
+       ------------------------------------------------------------- */
+    .ai-studio-grid {
+      display: grid;
+      grid-template-columns: 1.7fr 1fr;
+      gap: 22px;
+      height: 100%;
+    }
+
+    .chat-panel {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 24px;
+    }
+
+    .chat-history {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding-right: 8px;
+    }
+
+    .chat-bubble {
+      max-width: 82%;
+      padding: 16px 20px;
+      border-radius: 20px;
+      font-size: 13.5px;
+      line-height: 1.6;
+    }
+
+    .bubble-ai {
+      align-self: flex-start;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.78) 100%);
+      border-top: 1.5px solid #ffffff;
+      border-left: 1px solid rgba(255, 255, 255, 0.9);
+      border-bottom: 1.5px solid rgba(210, 215, 230, 0.5);
+      box-shadow: 0 10px 28px -4px rgba(0, 0, 0, 0.05);
+      color: var(--text-primary);
+    }
+
+    .bubble-user {
+      align-self: flex-end;
+      background: linear-gradient(135deg, var(--accent-red) 0%, #c81321 100%);
+      color: #ffffff;
+      box-shadow: 0 10px 24px -4px var(--accent-red-glow);
+    }
+
+    .chat-input-bar {
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px 10px 20px;
+    }
+
+    .chat-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-size: 13.5px;
+      color: var(--text-primary);
+    }
+
+    .chat-input::placeholder {
+      color: var(--text-muted);
+    }
+
+    /* Spatial Voice Orb */
+    .voice-panel {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .spatial-orb {
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.95), rgba(254, 230, 235, 0.8) 25%, var(--accent-red) 70%, #990011 100%);
+      box-shadow: 
+        0 0 55px 12px var(--accent-red-glow),
+        0 0 90px 28px var(--accent-gold-glow),
+        inset 0 4px 16px rgba(255, 255, 255, 0.8);
+      position: relative;
+      animation: floatOrb 4s ease-in-out infinite, pulseGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatOrb {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-12px) scale(1.05); }
+    }
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 45px 10px var(--accent-red-glow), 0 0 70px 20px var(--accent-gold-glow); }
+      100% { box-shadow: 0 0 75px 20px var(--accent-red-glow), 0 0 110px 35px var(--accent-gold-glow); }
+    }
+
+    .waveform {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      height: 40px;
+    }
+
+    .wave-bar {
+      width: 4px;
+      border-radius: 9999px;
+      background: var(--accent-red);
+      animation: waveMove 1.2s ease-in-out infinite;
+    }
+
+    .wave-bar:nth-child(1) { height: 14px; animation-delay: 0.1s; }
+    .wave-bar:nth-child(2) { height: 28px; animation-delay: 0.3s; }
+    .wave-bar:nth-child(3) { height: 38px; animation-delay: 0.2s; background: var(--accent-gold); }
+    .wave-bar:nth-child(4) { height: 24px; animation-delay: 0.4s; }
+    .wave-bar:nth-child(5) { height: 16px; animation-delay: 0.15s; }
+
+    @keyframes waveMove {
+      0%, 100% { transform: scaleY(0.4); }
+      50% { transform: scaleY(1); }
+    }
+
+    /* -------------------------------------------------------------
+       7. VIEW 3: INVENTORY & POS TERMINAL
+       ------------------------------------------------------------- */
+    .inventory-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      text-align: left;
+    }
+
+    .inventory-table th {
+      padding: 14px 18px;
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      border-bottom: 1.5px solid rgba(210, 215, 230, 0.6);
+    }
+
+    .inventory-table td {
+      padding: 16px 18px;
+      border-bottom: 1px solid rgba(210, 215, 230, 0.4);
+      color: var(--text-primary);
+    }
+
+    .inventory-table tr:hover td {
+      background: rgba(255, 255, 255, 0.65);
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 11.5px;
+      font-weight: 700;
+    }
+
+    .badge-success { background: rgba(16, 185, 129, 0.15); color: #059669; }
+    .badge-warning { background: rgba(245, 158, 11, 0.15); color: #d97706; }
+    .badge-danger { background: rgba(234, 29, 45, 0.15); color: var(--accent-red); }
+  </style>
+</head>
+<body>
+
+  <div class="app-root">
+    
+    <!-- Titlebar (Window Drag Area & Controls) -->
+    <header class="desktop-titlebar">
+      <div class="titlebar-left">
+        <div class="brand-badge">
+          <div class="brand-logo-icon">W</div>
+          <div class="brand-title">WinCommerce <span>OS</span></div>
+        </div>
+        <div class="live-status-pill">
+          <div class="live-pulse"></div>
+          3,856 Điểm Bán Toàn Quốc Trực Tuyến
+        </div>
+      </div>
+
+      <div class="titlebar-center">
+        <div class="search-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <span>Tìm kiếm siêu thị WinMart, SKU thịt MEATDeli, tồn kho...</span>
+          <span class="search-kbd">Ctrl K</span>
+        </div>
+      </div>
+
+      <div class="titlebar-right">
+        <div class="window-controls">
+          <button class="win-btn win-min" id="btn-win-min" title="Thu nhỏ (Minimize)"></button>
+          <button class="win-btn win-max" id="btn-win-max" title="Phóng to / Toàn màn hình"></button>
+          <button class="win-btn win-close" id="btn-win-close" title="Đóng ứng dụng"></button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Desktop Layout Body -->
+    <div class="desktop-body">
+      
+      <!-- Multi-Pane Navigation Sidebar -->
+      <aside class="desktop-sidebar">
+        <div class="sidebar-section-title">Khu Vực Nghiệp Vụ</div>
+        
+        <a class="nav-item active" data-tab="tab-dashboard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          Executive Command
+        </a>
+
+        <a class="nav-item" data-tab="tab-ai-studio">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10a9.96 9.96 0 0 1-4.587-1.11L3 22l1.11-4.413A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2z"></path></svg>
+          Retail Copilot AI
+        </a>
+
+        <a class="nav-item" data-tab="tab-inventory">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          Kho Lạnh & POS
+        </a>
+
+        <div class="sidebar-section-title">Hệ Sinh Thái Masan</div>
+        <a class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          MEATDeli Realtime
+        </a>
+        <a class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+          WinEco Chuỗi Lạnh
+        </a>
+
+        <!-- Sidebar Footer: Palette Selector -->
+        <div class="sidebar-footer">
+          <div class="theme-picker-title">
+            <span>Bảng Phối Màu Kính</span>
+            <span id="current-palette-name" style="font-weight: 600; color: var(--accent-red);">Bạch Ngọc</span>
+          </div>
+          <div class="theme-dots">
+            <div class="theme-dot active" style="background: #ea1d2d;" title="1. Bạch Ngọc & Đỏ WinCommerce" data-palette="palette-1"></div>
+            <div class="theme-dot" style="background: #ff3d52;" title="2. Lụa Sâm Panh & Cam Bình Minh" data-palette="palette-2"></div>
+            <div class="theme-dot" style="background: #0284c7;" title="3. Pha Lê Băng & Ruby San Hô" data-palette="palette-3"></div>
+            <div class="theme-dot" style="background: #eab308;" title="4. Mật Vàng Hoàng Gia & Kem Sữa" data-palette="palette-4"></div>
+            <div class="theme-dot" style="background: #8b5cf6;" title="5. Kính Cực Quang Tán Sắc Apple" data-palette="palette-5"></div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Content Canvas -->
+      <main class="desktop-canvas">
+        
+        <!-- VIEW 1: EXECUTIVE COMMAND CENTER -->
+        <section id="tab-dashboard" class="zone-box zone-show">
+          <div class="kpi-grid">
+            <div class="luminous-glass tactile-card kpi-card">
+              <div class="kpi-header">
+                <span>Doanh Thu Toàn Chuỗi</span>
+                <span class="kpi-delta delta-up">+18.4%</span>
+              </div>
+              <div class="kpi-value">84.2 <span style="font-size: 16px; font-weight: 600;">Tỷ VNĐ</span></div>
+              <div style="font-size: 11.5px; color: var(--text-muted);">Cập nhật từ 3,856 siêu thị WinMart/+</div>
+            </div>
+
+            <div class="luminous-glass tactile-card kpi-card">
+              <div class="kpi-header">
+                <span>Hội Viên WiN Mới</span>
+                <span class="kpi-delta delta-up">+24.1%</span>
+              </div>
+              <div class="kpi-value">12.8 <span style="font-size: 16px; font-weight: 600;">Triệu</span></div>
+              <div style="font-size: 11.5px; color: var(--text-muted);">Tỷ lệ chi tiêu lặp lại đạt 82.5%</div>
+            </div>
+
+            <div class="luminous-glass tactile-card kpi-card">
+              <div class="kpi-header">
+                <span>Sản Lượng MEATDeli</span>
+                <span class="kpi-delta delta-accent">Cháy Hàng</span>
+              </div>
+              <div class="kpi-value">46.5 <span style="font-size: 16px; font-weight: 600;">Tấn/ngày</span></div>
+              <div style="font-size: 11.5px; color: var(--text-muted);">Tốc độ xoay vòng kho lạnh: 4.2h</div>
+            </div>
+
+            <div class="luminous-glass tactile-card kpi-card">
+              <div class="kpi-header">
+                <span>Nông Sản Sạch WinEco</span>
+                <span class="kpi-delta delta-up">+12.6%</span>
+              </div>
+              <div class="kpi-value">112 <span style="font-size: 16px; font-weight: 600;">SKU Hot</span></div>
+              <div style="font-size: 11.5px; color: var(--text-muted);">Chuẩn VietGAP xuất kho lúc 04:30</div>
+            </div>
+          </div>
+
+          <div class="dashboard-split">
+            <div class="luminous-glass chart-container">
+              <div class="card-title">
+                <div>
+                  <h3>Xu Hướng Tăng Trưởng Doanh Thu Bán Lẻ</h3>
+                  <p style="font-size: 12.5px; color: var(--text-secondary); font-weight: 500;">So sánh dữ liệu quý WinMart (Đỏ) và WinMart+ (Vàng)</p>
+                </div>
+                <button class="btn-action">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                  Xuất Báo Cáo
+                </button>
+              </div>
+
+              <div class="chart-mockup">
+                <div class="chart-bar-group">
+                  <div class="bar-stack bar-red" style="height: 60%;"></div>
+                  <div class="bar-label">T4</div>
+                </div>
+                <div class="chart-bar-group">
+                  <div class="bar-stack bar-gold" style="height: 75%;"></div>
+                  <div class="bar-label">T5</div>
+                </div>
+                <div class="chart-bar-group">
+                  <div class="bar-stack bar-red" style="height: 85%;"></div>
+                  <div class="bar-label">T6</div>
+                </div>
+                <div class="chart-bar-group">
+                  <div class="bar-stack bar-gold" style="height: 68%;"></div>
+                  <div class="bar-label">T7</div>
+                </div>
+                <div class="chart-bar-group">
+                  <div class="bar-stack bar-red" style="height: 92%;"></div>
+                  <div class="bar-label">T8</div>
+                </div>
+                <div class="chart-bar-group">
+                  <div class="bar-stack bar-gold" style="height: 100%;"></div>
+                  <div class="bar-label">T9 (Now)</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="luminous-glass feed-container">
+              <div class="card-title">
+                <h3>Chỉ Đạo AI Tức Thời</h3>
+              </div>
+              <div class="feed-list">
+                <div class="feed-item">
+                  <div class="feed-dot" style="background: var(--accent-red);"></div>
+                  <div>
+                    <strong>WinMart Thảo Điền</strong> sắp hết tồn kho MEATDeli thịt xay chuẩn S. Đề xuất điều chuyển từ Hub Q9 trước 18h.
+                  </div>
+                </div>
+                <div class="feed-item">
+                  <div class="feed-dot" style="background: var(--accent-gold);"></div>
+                  <div>
+                    Chiến dịch <strong>Tiết kiệm 20% cùng WiN</strong> tăng vọt 34% giỏ hàng tươi sống tại cụm Hà Nội.
+                  </div>
+                </div>
+                <div class="feed-item">
+                  <div class="feed-dot" style="background: #10b981;"></div>
+                  <div>
+                    Đã hoàn thành đồng bộ dữ liệu giao dịch realtime của 1,420 cửa hàng WinMart+ miền Bắc.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 2: AI RETAIL COPILOT & VOICE STUDIO -->
+        <section id="tab-ai-studio" class="zone-box">
+          <div class="ai-studio-grid">
+            <div class="luminous-glass chat-panel">
+              <div class="card-title" style="margin-bottom: 12px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent-red);"></div>
+                  <h3>Trợ Lý Bán Lẻ WinCommerce AI</h3>
+                </div>
+                <span style="font-size: 11.5px; color: var(--text-muted);">Được huấn luyện theo dữ liệu Masan Group</span>
+              </div>
+
+              <div class="chat-history" id="chat-messages">
+                <div class="chat-bubble bubble-ai">
+                  Xin chào Tổng Giám Đốc! Hôm nay toàn chuỗi <strong>3,856 cửa hàng</strong> ghi nhận tốc độ tăng trưởng doanh thu <strong>+18.4%</strong>. Sản phẩm thịt sạch MEATDeli và rau củ WinEco đang dẫn đầu giỏ hàng hội viên WiN. Tôi có thể hỗ trợ điều chuyển kho hay dự báo nhu cầu cuối tuần này giúp anh không?
+                </div>
+                <div class="chat-bubble bubble-user">
+                  Hãy phân tích sức mua tại khu vực TP.HCM trong 24 giờ qua và gợi ý chương trình khuyến mãi cuối tuần.
+                </div>
+                <div class="chat-bubble bubble-ai">
+                  Dữ liệu phân tích cho thấy: Doanh số tại TP.HCM tăng <strong>+22.8%</strong>, đặc biệt tại cụm WinMart Landmark 81 và WinMart+ Phú Mỹ Hưng. 
+                  <br><br>
+                  💡 <strong>Gợi ý chiến lược:</strong>
+                  <br>1. Triển khai Combo <em>"Bữa Ăn Trọn Vẹn Gia Đình"</em> (Thịt heo MEATDeli + Rau sạch WinEco) giảm 20% độc quyền Hội viên WiN.
+                  <br>2. Tăng tồn kho rau thủy canh thêm 30% tại kho trung chuyển Bình Dương trước 05:00 sáng thứ Bảy.
+                </div>
+              </div>
+
+              <div class="luminous-pill chat-input-bar">
+                <input type="text" id="user-input-field" class="chat-input" placeholder="Hỏi AI về SKU, doanh số siêu thị, tối ưu tồn kho..." />
+                <button class="btn-action" id="btn-send-message" style="padding: 9px 18px;">
+                  Gửi
+                </button>
+              </div>
+            </div>
+
+            <div class="luminous-glass voice-panel">
+              <div class="card-title" style="width: 100%; justify-content: center;">
+                <h3>Không Gian Giọng Nói WinVoice</h3>
+              </div>
+              
+              <div class="spatial-orb"></div>
+
+              <div class="waveform">
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+              </div>
+
+              <div style="font-size: 13.5px; font-weight: 600; color: var(--text-primary);">
+                Đang lắng nghe chỉ đạo chiến lược...
+              </div>
+              <p style="font-size: 12px; color: var(--text-muted); max-width: 280px;">
+                Nhấn giữ Space hoặc bấm micro để ra lệnh bằng giọng nói tự nhiên với phản hồi độ trễ cực thấp.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW 3: INVENTORY & POS TERMINAL -->
+        <section id="tab-inventory" class="zone-box">
+          <div class="luminous-glass" style="padding: 24px; flex: 1; display: flex; flex-direction: column; gap: 18px;">
+            <div class="card-title">
+              <div>
+                <h3>Kiểm Soát Tồn Kho Chuỗi Lạnh & Điểm Bán Realtime</h3>
+                <p style="font-size: 12.5px; color: var(--text-secondary);">Giám sát tình trạng tươi sống MEATDeli & WinEco tại các Hub chính</p>
+              </div>
+              <div style="display: flex; gap: 12px;">
+                <button class="btn-action" style="background: linear-gradient(135deg, var(--accent-gold) 0%, #a27429 100%);">
+                  Điều Chuyển Kho Nhanh
+                </button>
+                <button class="btn-action">
+                  + Nhập Lô Hàng Mới
+                </button>
+              </div>
+            </div>
+
+            <div style="overflow-x: auto; flex: 1;">
+              <table class="inventory-table">
+                <thead>
+                  <tr>
+                    <th>Mã SKU</th>
+                    <th>Tên Sản Phẩm</th>
+                    <th>Nguồn Cung</th>
+                    <th>Tồn Kho (Kg/Gói)</th>
+                    <th>Nhiệt Độ Kho</th>
+                    <th>Trạng Thái</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>MD-8821</strong></td>
+                    <td>Thịt Heo Sạch Xay MEATDeli 400g</td>
+                    <td>Tổ Hợp MEAT Hà Nam</td>
+                    <td>1,420 khay</td>
+                    <td>0°C - 4°C</td>
+                    <td><span class="status-badge badge-success">Chuẩn Tươi Tốt</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>WE-1044</strong></td>
+                    <td>Xà Lách Thủy Canh WinEco 250g</td>
+                    <td>Nông Trường Tam Đảo</td>
+                    <td>380 túi</td>
+                    <td>12°C</td>
+                    <td><span class="status-badge badge-warning">Cần Bổ Sung</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>MD-9912</strong></td>
+                    <td>Ba Chỉ Bò Úc MEATDeli Cắt Lát</td>
+                    <td>Kho Lạnh Song Thần</td>
+                    <td>85 khay</td>
+                    <td>-18°C</td>
+                    <td><span class="status-badge badge-danger">Báo Động Cận Tồn</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>WE-5520</strong></td>
+                    <td>Dưa Lưới Fuji WinEco VietGAP</td>
+                    <td>Nông Trường Long Thành</td>
+                    <td>2,800 quả</td>
+                    <td>15°C</td>
+                    <td><span class="status-badge badge-success">Chuẩn Tươi Tốt</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // Tab Switching
+    const navItems = document.querySelectorAll('.nav-item[data-tab]');
+    const zoneBoxes = document.querySelectorAll('.zone-box');
+
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        navItems.forEach(nav => nav.classList.remove('active'));
+        item.classList.add('active');
+
+        const targetTab = item.getAttribute('data-tab');
+        zoneBoxes.forEach(zone => {
+          if (zone.id === targetTab) {
+            zone.classList.add('zone-show');
+          } else {
+            zone.classList.remove('zone-show');
+          }
+        });
+      });
+    });
+
+    // Theme Palette Switching
+    const themeDots = document.querySelectorAll('.theme-dot');
+    const paletteNames = {
+      'palette-1': 'Bạch Ngọc & Đỏ WinCommerce',
+      'palette-2': 'Lụa Sâm Panh & Cam Bình Minh',
+      'palette-3': 'Pha Lê Băng & Ruby San Hô',
+      'palette-4': 'Mật Vàng Hoàng Gia & Kem Sữa',
+      'palette-5': 'Kính Cực Quang Tán Sắc Apple'
+    };
+
+    themeDots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        themeDots.forEach(d => d.classList.remove('active'));
+        dot.classList.add('active');
+
+        const palette = dot.getAttribute('data-palette');
+        document.documentElement.setAttribute('data-theme', palette);
+        document.getElementById('current-palette-name').textContent = paletteNames[palette].split('&')[0];
+      });
+    });
+
+    // Interactive AI Chat Simulation
+    const btnSend = document.getElementById('btn-send-message');
+    const inputField = document.getElementById('user-input-field');
+    const chatHistory = document.getElementById('chat-messages');
+
+    function sendPrompt() {
+      const text = inputField.value.trim();
+      if (!text) return;
+
+      const userBubble = document.createElement('div');
+      userBubble.className = 'chat-bubble bubble-user';
+      userBubble.textContent = text;
+      chatHistory.appendChild(userBubble);
+      inputField.value = '';
+      chatHistory.scrollTop = chatHistory.scrollHeight;
+
+      setTimeout(() => {
+        const aiBubble = document.createElement('div');
+        aiBubble.className = 'chat-bubble bubble-ai';
+        aiBubble.innerHTML = `Đã tiếp nhận yêu cầu: <em>"${text}"</em>.<br><br>Hệ thống AI WinCommerce đang kích hoạt mô hình dự báo phân tích trên dữ liệu của <strong>3,856 điểm bán</strong> và chuỗi lạnh MEATDeli/WinEco. Kết quả tối ưu cho thấy khả năng tăng trưởng thêm <strong>+14.5% biên lợi nhuận gộp</strong>.`;
+        chatHistory.appendChild(aiBubble);
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+      }, 700);
+    }
+
+    btnSend.addEventListener('click', sendPrompt);
+    inputField.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') sendPrompt();
+    });
+
+    // Native Window Control Handlers
+    document.getElementById('btn-win-max').addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    });
+
+    document.getElementById('btn-win-close').addEventListener('click', () => {
+      window.close();
+    });
+
+    document.getElementById('btn-win-min').addEventListener('click', () => {
+      document.body.style.transform = 'scale(0.98)';
+      document.body.style.opacity = '0.5';
+      setTimeout(() => {
+        document.body.style.transform = 'scale(1)';
+        document.body.style.opacity = '1';
+      }, 300);
+    });
+  </script>
+</body>
+</html>

@@ -1,6 +1,12 @@
 import os
 import sys
 
+# Đảm bảo in ký tự tiếng Việt an toàn trên console Windows
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+if hasattr(sys.stderr, 'reconfigure'):
+    sys.stderr.reconfigure(encoding='utf-8')
+
 def update_readme():
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     skills_dir = os.path.join(base_dir, 'skills')
@@ -27,20 +33,24 @@ def update_readme():
         'prototype': 'qa',
         'git-commit-helper': 'qa',
         'skill-documenter': 'qa',
+        'exploratory-testing': 'qa',
+        'ai-bug-triage': 'qa',
+        'code-review-and-qa': 'qa',
         
         'web-scraping-headless': 'automation',
         'sap-automation-win32': 'automation',
         
         'image-computer-vision': 'media',
         'ai-video-filmmaking': 'media',
+        'premium-ui-assets': 'media',
+        'wincommerce-luminous-liquid-glass': 'media',
         
         'statistical-anomaly-detector': 'data',
         'ml-anomaly-detector': 'data',
         'time-series-anomaly-detector': 'data',
         'data-cleaning-and-formatting': 'data',
         'excel-report-generator': 'data',
-        'pdf-data-extractor': 'data',
-        'premium-ui-assets': 'media' # premium-ui-assets nằm ở nhóm xử lý đa phương tiện / giao diện
+        'pdf-data-extractor': 'data'
     }
     
     skill_folders = [f for f in os.listdir(skills_dir) if os.path.isdir(os.path.join(skills_dir, f))]

@@ -1,6 +1,6 @@
 # Quy tắc & Kỹ năng tùy chỉnh cho ChatGPT/Codex và Google Antigravity
 
-Repository này lưu trữ các nguyên tắc hoạt động dùng chung và 18 kỹ năng tùy chỉnh cho ChatGPT/Codex và Google Antigravity/Gemini, phục vụ các công việc tự động hóa, cào dữ liệu, xử lý ảnh, dựng phim, QA và chẩn đoán lỗi dữ liệu trên Windows.
+Repository này lưu trữ các nguyên tắc hoạt động dùng chung và 22 kỹ năng tùy chỉnh cho ChatGPT/Codex và Google Antigravity/Gemini, phục vụ các công việc tự động hóa, cào dữ liệu, xử lý ảnh, dựng phim, QA và chẩn đoán lỗi dữ liệu trên Windows.
 
 ---
 
@@ -8,9 +8,12 @@ Repository này lưu trữ các nguyên tắc hoạt động dùng chung và 18 
 
 *   **`rules/general_rules.md`**: Bản nguyên tắc hoạt động toàn cục (chỉ code khi xác nhận, tương thích Tiếng Việt Telex, tự động sao lưu, kiểm thử QA tự động sửa lỗi, không yêu cầu quyền Admin, chạy ứng dụng portable khởi động < 2s).
 *   **`projects/Dự án AI/development_log.csv`**: Tệp nhật ký phát triển ghi nhận lịch sử thay đổi phiên bản.
-*   **`skills/`**: Danh sách 18 kỹ năng tùy chỉnh:
+*   **`skills/`**: Danh sách 22 kỹ năng tùy chỉnh:
     *   **Nhóm năng suất & QA:**
+        *   `ai-bug-triage`: Phân loại, gom cụm lỗi, đánh giá mức độ nghiêm trọng (P0-P3) và lập báo cáo lỗi (Bug Report) chi tiết chuẩn công nghiệp.
+        *   `code-review-and-qa`: Rà soát mã nguồn và kiểm định chất lượng sản phẩm đa trục (Tính đúng đắn, bảo mật, xử lý lỗi biên và chất lượng kiểm thử).
         *   `diagnose`: Chẩn đoán lỗi phần mềm từng bước khoa học.
+        *   `exploratory-testing`: Kiểm thử thăm dò sản phẩm (Exploratory Testing), rà soát hành vi bất thường, kịch bản phá bĩnh và phát hiện lỗi tiềm ẩn.
         *   `git-commit-helper`: Tự động hóa phân tích git diff, sinh commit Semantic, quản lý phiên bản SemVer và ghi nhật ký phát triển development_log.csv.
         *   `grill-me`: Phỏng vấn sâu chất vấn giải pháp để đồng bộ lên GitHub.
         *   `handoff`: Bàn giao ngữ cảnh phiên làm việc giữa các máy tính.
@@ -24,6 +27,7 @@ Repository này lưu trữ các nguyên tắc hoạt động dùng chung và 18 
         *   `ai-video-filmmaking`: Làm phim AI bằng API và biên tập video tự động bằng MoviePy & FFmpeg portable.
         *   `image-computer-vision`: Xử lý hình ảnh và nhận diện ký tự (OCR) bằng OpenCV, Pillow và EasyOCR không đòi hỏi quyền Admin.
         *   `premium-ui-assets`: Cung cấp thư viện mã CSS/HTML mẫu chuẩn premium (gradient, glassmorphism, dark mode, micro-animations, màu HSL) để thiết kế giao diện cao cấp.
+        *   `wincommerce-luminous-liquid-glass`: >-
     *   **Nhóm xử lý dữ liệu nâng cao:**
         *   `data-cleaning-and-formatting`: Chuẩn hóa định dạng, làm sạch dữ liệu thô và xử lý giá trị trống (Null/NaN) sử dụng pandas.
         *   `excel-report-generator`: Tạo báo cáo Excel cao cấp, tô màu có điều kiện (Conditional Formatting) và tạo biểu đồ bằng openpyxl.
