@@ -47,8 +47,8 @@ from bs4 import BeautifulSoup
 
 def scrape_dynamic_site(url):
     with sync_playwright() as p:
-        # Khởi chạy trình duyệt headless từ thư mục cục bộ
-        browser = p.chromium.launch(headless=True)
+        # Dùng Chrome cài sẵn trên máy (không cần tải chromium); bỏ channel nếu đã cài chromium cục bộ
+        browser = p.chromium.launch(channel="chrome", headless=True)
         page = browser.new_page()
         
         # Thiết lập thời gian chờ tối đa

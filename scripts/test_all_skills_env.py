@@ -122,7 +122,7 @@ def test_suite():
     try:
         from playwright.sync_api import sync_playwright
         with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
+            browser = p.chromium.launch(channel="chrome", headless=True)
             page = browser.new_page()
             page.set_content("<html><body><div id='content'>Antigravity Web Scraping OK</div></body></html>")
             text = page.locator("#content").inner_text()
