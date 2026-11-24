@@ -46,6 +46,7 @@ def update_readme():
         'ai-video-filmmaking': 'media',
         'premium-ui-assets': 'media',
         'wincommerce-luminous-liquid-glass': 'media',
+        'lucian-uxui': 'media',
         
         'statistical-anomaly-detector': 'data',
         'ml-anomaly-detector': 'data',
