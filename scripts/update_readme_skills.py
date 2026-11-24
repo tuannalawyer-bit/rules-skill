@@ -40,6 +40,7 @@ def update_readme():
         'web-scraping-headless': 'automation',
         'sap-automation-win32': 'automation',
         'agent-desktop': 'automation',
+        'cli-anything': 'automation',
         
         'image-computer-vision': 'media',
         'ai-video-filmmaking': 'media',

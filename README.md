@@ -8,7 +8,7 @@ Repository này lưu trữ các nguyên tắc hoạt động dùng chung và 22 
 
 *   **`rules/general_rules.md`**: Bản nguyên tắc hoạt động toàn cục (chỉ code khi xác nhận, tương thích Tiếng Việt Telex, tự động sao lưu, kiểm thử QA tự động sửa lỗi, không yêu cầu quyền Admin, chạy ứng dụng portable khởi động < 2s).
 *   **`projects/Dự án AI/development_log.csv`**: Tệp nhật ký phát triển ghi nhận lịch sử thay đổi phiên bản.
-*   **`skills/`**: Danh sách 23 kỹ năng tùy chỉnh:
+*   **`skills/`**: Danh sách 24 kỹ năng tùy chỉnh:
     *   **Nhóm năng suất & QA:**
         *   `ai-bug-triage`: Phân loại, gom cụm lỗi, đánh giá mức độ nghiêm trọng (P0-P3) và lập báo cáo lỗi (Bug Report) chi tiết chuẩn công nghiệp.
         *   `code-review-and-qa`: Rà soát mã nguồn và kiểm định chất lượng sản phẩm đa trục (Tính đúng đắn, bảo mật, xử lý lỗi biên và chất lượng kiểm thử).
@@ -22,6 +22,7 @@ Repository này lưu trữ các nguyên tắc hoạt động dùng chung và 22 
         *   `skill-documenter`: Tự động quét thư mục skills/, đọc YAML frontmatter của từng kỹ năng và đồng bộ bảng danh sách kỹ năng vào tệp README.md chính.
     *   **Nhóm cào dữ liệu & Tự động hóa:**
         *   `agent-desktop`: Điều khiển và tự động hóa ứng dụng desktop (Windows, macOS, Linux) thông qua Accessibility Trees bằng CLI agent-desktop hoặc MCP Server. Hỗ trợ chụp cấu trúc UI dạng snapshot JSON, tương tác semantic refs (@ref), điền form, click, gõ phím, cuộn và quản lý cửa sổ mà không phụ thuộc tọa độ pixel hay mô hình thị giác.
+        *   `cli-anything`: Điều khiển và tự động hóa phần mềm desktop, ứng dụng đồ họa và sáng tạo (Blender, GIMP, Inkscape, LibreOffice, Kdenlive, OBS, FreeCAD, Zotero,...) dưới dạng Agent-Native CLI qua CLI-Anything & CLI-Hub. Tự động tìm kiếm, cài đặt công cụ CLI wrapper, thực thi lệnh dạng JSON và quản lý workflow không phụ thuộc GUI.
         *   `sap-automation-win32`: Tự động hóa phần mềm SAP GUI & SAP Analysis trong Excel bằng win32com.client và openpyxl.
         *   `web-scraping-headless`: Duyệt web động và cào dữ liệu dạng portable, không yêu cầu quyền Admin bằng Playwright (chromium) và BeautifulSoup.
     *   **Nhóm xử lý đa phương tiện:**
