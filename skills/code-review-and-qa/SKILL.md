@@ -38,7 +38,8 @@ Mỗi lần rà soát sản phẩm/mã nguồn, bắt buộc phải thẩm đị
 - [ ] **Chiến lược Timeout & Retry:** Các lời gọi mạng, đọc tệp, hoặc tiến trình phụ có thời gian chờ (timeout) hợp lý để tránh treo ứng dụng vĩnh viễn không?
 - [ ] **Phương án dự phòng (Graceful Degradation):** Khi dịch vụ phụ bị lỗi, ứng dụng có tiếp tục chạy các tính năng cơ bản được không?
 
-### Trục 4: Thực chất Kiểm thử (Test Substance Gate)
+### Trục 4: Thực chất Kiểm thử & TDD (Test Substance & TDD Gate)
+- [ ] **Chu trình TDD (Red → Green):** Với logic mới hoặc sửa lỗi, đã có ca kiểm thử tái hiện lỗi/yêu cầu thất bại trước (Red) rồi mới viết code tối thiểu để vượt qua (Green) chưa?
 - [ ] **Chống kiểm thử hình thức (No Hollow Tests):** Loại bỏ các bài test chỉ gọi hàm mà không có câu lệnh `assert`, hoặc các `assert` luôn đúng (`assert True`).
 - [ ] **Bao phủ kịch bản thất bại:** Bộ test phải kiểm tra cả kịch bản báo lỗi (Negative Testing) chứ không chỉ chạy kịch bản thành công (Happy Path).
 - [ ] **Kiểm thử hồi quy (Regression Test):** Mỗi khi sửa lỗi, phải bổ sung ít nhất một ca kiểm thử mô phỏng lại đúng lỗi đó để đảm bảo lỗi không bao giờ tái xuất hiện.

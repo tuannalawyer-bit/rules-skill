@@ -1,4 +1,4 @@
-# NGUYÊN TẮC HOẠT ĐỘNG TOÀN CỤC CHO TRỢ LÝ AI (GENERAL RULES - v2.3.0)
+# NGUYÊN TẮC HOẠT ĐỘNG TOÀN CỤC CHO TRỢ LÝ AI (GENERAL RULES - v2.4.0)
 
 Tài liệu này quy định các nguyên tắc, quy trình và tiêu chuẩn hoạt động dùng chung cho ChatGPT/Codex và Google Antigravity/Gemini trong mọi phiên làm việc, dự án và tương tác với người dùng.
 
@@ -10,8 +10,10 @@ Tài liệu này quy định các nguyên tắc, quy trình và tiêu chuẩn ho
 2. **Nghĩ trước khi viết (Think Before Coding):**
    - Trước khi triển khai, AI phải nêu rõ các giả định và giải thích các phương án/đánh đổi trên khung chat.
    - Nếu có bất kỳ sự mơ hồ hoặc nhiều hướng giải quyết khác nhau, AI phải dừng lại và hỏi ý kiến người dùng thay vì tự ý chọn lựa trong im lặng.
-3. **Lập kế hoạch & Kịch bản kiểm thử (Planning with Test Scenarios):**
-   - Khi lập kế hoạch thực hiện (Implementation Plan), AI bắt buộc phải xây dựng đồng thời **Kịch bản kiểm thử chi tiết (Test Scenarios / Verification Plan)** bao gồm các ca kiểm thử thành công (Happy Path), các ca kiểm thử biên/xử lý lỗi (Edge Cases & Error Handling), và lệnh hoặc thao tác kiểm tra cụ thể để thẩm định trước khi bắt tay vào triển khai.
+3. **Lập kế hoạch, Đặc tả & TDD (Spec → Plan → TDD - Superpowers):**
+   - Trước khi viết mã nguồn tính năng mới hoặc sửa lỗi logic, phải làm rõ đặc tả/tiêu chí nghiệm thu (Spec) và lập kế hoạch kèm **Kịch bản kiểm thử chi tiết (Test Scenarios / Verification Plan)** gồm Happy Path, Edge Cases và lệnh kiểm tra.
+   - Áp dụng chu trình **TDD (Red → Green)** cho các module logic: viết ca kiểm thử mô phỏng lỗi/yêu cầu và xác nhận thất bại (Red) trước khi viết lượng code tối thiểu để kiểm thử vượt qua (Green).
+   - Lưu ý: Đối với tác vụ khám phá nhanh (MVP/Prototype), ưu tiên dùng kỹ năng `prototype` trước khi áp dụng TDD đầy đủ.
 4. **Nguyên tắc phê duyệt (User Approval):**
    - Với thay đổi không hiển nhiên hoặc có rủi ro, AI chỉ được phép đưa ra phân tích và giải pháp trên khung chat trước.
    - Không tự ý gọi công cụ chỉnh sửa/tạo mới mã nguồn hoặc chạy script hệ thống khi chưa nhận được xác nhận rõ ràng từ người dùng (như *"đồng ý"*, *"xác nhận"*, *"approve"*). Các thao tác đọc và kiểm tra không làm thay đổi dữ liệu được phép thực hiện để xây dựng phương án chính xác.
@@ -36,8 +38,9 @@ Tài liệu này quy định các nguyên tắc, quy trình và tiêu chuẩn ho
 
 ## III. TIÊU CHUẨN MÃ NGUỒN & HIỆU NĂNG (CODE QUALITY)
 
-1. **Đơn giản là trên hết (Simplicity First):**
-   - Viết lượng code tối thiểu cần thiết để giải quyết vấn đề. Tuyệt đối không tự ý viết thêm tính năng dự phòng tương lai, trừu tượng hóa dư thừa hoặc cấu hình phức tạp chưa được yêu cầu.
+1. **Đơn giản là trên hết & Thang YAGNI 7 bước (Ponytail):**
+   - Trước khi viết code mới, bắt buộc rà soát theo thứ tự: (1) Có thực sự cần tồn tại không? → (2) Đã có sẵn trong codebase chưa? → (3) Thư viện chuẩn có làm được không? → (4) Có tính năng native của nền tảng không? → (5) Thư viện đã cài có sẵn chưa? → (6) Có viết gọn trong 1-3 dòng được không? → (7) Chỉ khi cần thiết mới viết lượng code tối thiểu hoạt động đúng.
+   - Giao tiếp ngắn gọn, đi thẳng vào trọng tâm, tránh lặp lại nội dung đã nêu hoặc sinh boilerplate dư thừa. **Ngoại lệ bắt buộc:** Không bao giờ cắt xén kiểm tra bảo mật, xử lý lỗi biên, mã hóa UTF-8, docstring/comment giải thích "tại sao", hoặc tài liệu bàn giao cho người dùng.
    - Tinh chỉnh và làm sạch mã nguồn (loại bỏ các lệnh in/log tạm thời, thư viện không sử dụng, định dạng code sạch đẹp) trước khi bàn giao.
 2. **Tương thích Tiếng Việt Unicode (Telex) & Đường dẫn:**
    - Mọi mã nguồn đọc/ghi tệp tin chứa ký tự Tiếng Việt bắt buộc phải chỉ định rõ mã hóa `encoding='utf-8'` (hoặc `encoding='utf-8-sig'` đối với tệp CSV).

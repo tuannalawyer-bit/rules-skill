@@ -36,17 +36,21 @@ def update_readme():
         'exploratory-testing': 'qa',
         'ai-bug-triage': 'qa',
         'code-review-and-qa': 'qa',
+        'context-and-spec-engineering': 'qa',
+        'safe-rollout-and-migration': 'qa',
         
         'web-scraping-headless': 'automation',
         'sap-automation-win32': 'automation',
         'agent-desktop': 'automation',
         'cli-anything': 'automation',
+        'graphify': 'automation',
         
         'image-computer-vision': 'media',
         'ai-video-filmmaking': 'media',
         'premium-ui-assets': 'media',
         'wincommerce-luminous-liquid-glass': 'media',
         'lucian-uxui': 'media',
+        'ui-ux-pro-max': 'media',
         
         'statistical-anomaly-detector': 'data',
         'ml-anomaly-detector': 'data',

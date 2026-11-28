@@ -8,10 +8,11 @@ Repository này lưu trữ các nguyên tắc hoạt động dùng chung và 22 
 
 *   **`rules/general_rules.md`**: Bản nguyên tắc hoạt động toàn cục (chỉ code khi xác nhận, tương thích Tiếng Việt Telex, tự động sao lưu, kiểm thử QA tự động sửa lỗi, không yêu cầu quyền Admin, chạy ứng dụng portable khởi động < 2s).
 *   **`projects/Dự án AI/development_log.csv`**: Tệp nhật ký phát triển ghi nhận lịch sử thay đổi phiên bản.
-*   **`skills/`**: Danh sách 25 kỹ năng tùy chỉnh:
+*   **`skills/`**: Danh sách 29 kỹ năng tùy chỉnh:
     *   **Nhóm năng suất & QA:**
         *   `ai-bug-triage`: Phân loại, gom cụm lỗi, đánh giá mức độ nghiêm trọng (P0-P3) và lập báo cáo lỗi (Bug Report) chi tiết chuẩn công nghiệp.
         *   `code-review-and-qa`: Rà soát mã nguồn và kiểm định chất lượng sản phẩm đa trục (Tính đúng đắn, bảo mật, xử lý lỗi biên và chất lượng kiểm thử).
+        *   `context-and-spec-engineering`: Kỹ thuật đặc tả ràng buộc (Spec-Driven), quản lý ngữ cảnh (Context Engineering) và bảo toàn kiến trúc (Hyrum's Law, Chesterton's Fence) chắt lọc từ Addy Osmani Agent Skills & Superpowers.
         *   `diagnose`: Chẩn đoán lỗi phần mềm từng bước khoa học.
         *   `exploratory-testing`: Kiểm thử thăm dò sản phẩm (Exploratory Testing), rà soát hành vi bất thường, kịch bản phá bĩnh và phát hiện lỗi tiềm ẩn.
         *   `git-commit-helper`: Tự động hóa phân tích git diff, sinh commit Semantic, quản lý phiên bản SemVer và ghi nhật ký phát triển development_log.csv.
@@ -19,10 +20,12 @@ Repository này lưu trữ các nguyên tắc hoạt động dùng chung và 22 
         *   `handoff`: Bàn giao ngữ cảnh phiên làm việc giữa các máy tính.
         *   `prototype`: Xây dựng nhanh phiên bản thô chạy thử (MVP) của phần mềm.
         *   `reasoning-critic-qa`: Phản biện giải pháp, phân tích rủi ro, kiểm thử (QA) và tự động sửa lỗi trong các ứng dụng di động & portable.
+        *   `safe-rollout-and-migration`: Chiến lược phát hành an toàn (Feature Flags, Rollback), di trú dữ liệu/schema (Migration) và loại bỏ tính năng cũ (Deprecation) chắt lọc từ Addy Osmani Agent Skills.
         *   `skill-documenter`: Tự động quét thư mục skills/, đọc YAML frontmatter của từng kỹ năng và đồng bộ bảng danh sách kỹ năng vào tệp README.md chính.
     *   **Nhóm cào dữ liệu & Tự động hóa:**
         *   `agent-desktop`: Điều khiển và tự động hóa ứng dụng desktop (Windows, macOS, Linux) thông qua Accessibility Trees bằng CLI agent-desktop hoặc MCP Server. Hỗ trợ chụp cấu trúc UI dạng snapshot JSON, tương tác semantic refs (@ref), điền form, click, gõ phím, cuộn và quản lý cửa sổ mà không phụ thuộc tọa độ pixel hay mô hình thị giác.
         *   `cli-anything`: Điều khiển và tự động hóa phần mềm desktop, ứng dụng đồ họa và sáng tạo (Blender, GIMP, Inkscape, LibreOffice, Kdenlive, OBS, FreeCAD, Zotero,...) dưới dạng Agent-Native CLI qua CLI-Anything & CLI-Hub. Tự động tìm kiếm, cài đặt công cụ CLI wrapper, thực thi lệnh dạng JSON và quản lý workflow không phụ thuộc GUI.
+        *   `graphify`: Quét mã nguồn, tài liệu và cấu hình dự án thành bản đồ tri thức (Knowledge Graph) bằng AST Tree-sitter cục bộ để AI hiểu kiến trúc nhanh và tiết kiệm token.
         *   `sap-automation-win32`: Tự động hóa phần mềm SAP GUI & SAP Analysis trong Excel bằng win32com.client và openpyxl.
         *   `web-scraping-headless`: Duyệt web động và cào dữ liệu dạng portable, không yêu cầu quyền Admin bằng Playwright (chromium) và BeautifulSoup.
     *   **Nhóm xử lý đa phương tiện:**
@@ -30,6 +33,7 @@ Repository này lưu trữ các nguyên tắc hoạt động dùng chung và 22 
         *   `image-computer-vision`: Xử lý hình ảnh và nhận diện ký tự (OCR) bằng OpenCV, Pillow và EasyOCR không đòi hỏi quyền Admin.
         *   `lucian-uxui`: Thư viện 480 thành phần giao diện tương tác không phụ thuộc thư viện (Lucian UX/UI Prompt) chạy chế độ Hybrid Offline-Ready cho Antigravity, hỗ trợ tìm kiếm cục bộ tức thì, port sang React/Next/Vue/Svelte/Astro/HTML và ánh xạ token sang WinCommerce/Vịnh Ngọc.
         *   `premium-ui-assets`: Cung cấp thư viện mã CSS/HTML mẫu chuẩn premium (gradient, glassmorphism, dark mode, micro-animations, màu HSL) để thiết kế giao diện cao cấp.
+        *   `ui-ux-pro-max`: Công cụ tra cứu Design Intelligence cục bộ (BM25 search cho bảng màu, typography, layout, chart, accessibility) được tối ưu để bổ trợ và không xung đột với các design system nội bộ.
         *   `wincommerce-luminous-liquid-glass`: >-
     *   **Nhóm xử lý dữ liệu nâng cao:**
         *   `data-cleaning-and-formatting`: Chuẩn hóa định dạng, làm sạch dữ liệu thô và xử lý giá trị trống (Null/NaN) sử dụng pandas.
